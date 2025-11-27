@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beauty Bliss - Product Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-pink-50 shadow">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-pink-600">Beauty Bliss</h1>
+      <nav class="space-x-6">
+        <a href="beautybliss.html" class="hover:text-pink-600">Home</a>
+        <a href="catalog.html" class="hover:text-pink-600">Shop</a>
+        <a href="searchpage.html" class="hover:text-pink-600">Search Page</a>
+        <a href="LOGIN.html" class="hover:text-pink-600">Login</a>
+        <a href="cart.html" class="hover:text-pink-600">Cart</a>
+          🛒<span class="absolute -top-2 -right-2 text-xs bg-pink-500 text-white px-1 rounded-full">2</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Product Section -->
+  <section class="container mx-auto px-6 py-10 grid md:grid-cols-2 gap-10">
+    <div>
+      <img src="https://aveandyou.com/cdn/shop/files/GetGlowingSerumMood.png?v=1708421214&width=1214" alt="Hydrating Glow Serum" class="w-full rounded shadow-lg"/>
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Hydrating Glow Serum</h2>
+      <p class="text-xl text-pink-600 font-semibold mb-4">$34.99</p>
+      <p class="text-gray-600 mb-4">
+        A luxurious, lightweight serum designed to deeply hydrate and revitalize your skin with a radiant glow.
+        Infused with essential vitamins and antioxidants for a youthful look.
+      </p>
+      <div class="mb-4">
+        <label for="quantity" class="block font-medium mb-1">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1" class="w-20 border px-2 py-1 rounded"/>
+      </div>
+      <button class="bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700 transition">Add to Cart</button>
+
+      <div class="mt-6">
+        <h3 class="text-xl font-semibold mb-2">Product Highlights</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>50ml glass dropper bottle</li>
+          <li>Vitamin C, Hyaluronic Acid & Aloe Vera</li>
+          <li>Paraben-free, sulfate-free, cruelty-free</li>
+          <li>Suitable for all skin types</li>
+          <li>Dermatologist-tested and clinically proven</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="text-xl font-semibold mb-2">Ingredients</h3>
+        <p class="text-gray-600">
+          Aqua, Glycerin, Ascorbic Acid (Vitamin C), Hyaluronic Acid, Aloe Barbadensis Leaf Juice, Tocopherol (Vitamin E),
+          Green Tea Extract, Panthenol, Phenoxyethanol.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="container mx-auto px-6 py-10">
+    <h3 class="text-2xl font-bold mb-4">Customer Reviews</h3>
+    <div class="space-y-4">
+      <div class="bg-gray-50 p-4 rounded shadow">
+        <p class="font-semibold text-gray-800">🌟🌟🌟🌟🌟 – Emily R.</p>
+        <p class="text-gray-600">"Absolutely love this serum! My skin feels hydrated and glows every morning."</p>
+      </div>
+      <div class="bg-gray-50 p-4 rounded shadow">
+        <p class="font-semibold text-gray-800">🌟🌟🌟🌟 – Priya M.</p>
+        <p class="text-gray-600">"Very light and refreshing. Works great under makeup too!"</p>
+      </div>
+      <div class="bg-gray-50 p-4 rounded shadow">
+        <p class="font-semibold text-gray-800">🌟🌟🌟 – Sarah L.</p>
+        <p class="text-gray-600">"Nice texture but wish it had a pump bottle. Still good results."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="bg-pink-50 py-10">
+    <div class="container mx-auto px-6">
+      <h3 class="text-2xl font-bold mb-6">You May Also Like</h3>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZx7T5ZAPh5ilTNhoWfJGay659peYzU3c6xQ&s" alt="Toner" class="rounded mb-2">
+          <h4 class="text-lg font-semibold">Vitamin C Toner</h4>
+          <p class="text-pink-600">$22.99</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+          <img src="https://merryderma.com.pk/wp-content/uploads/2022/07/CeraVe-Moisturizing-Cream-16oz-jar.jpg" alt="Moisturizer" class="rounded mb-2">
+          <h4 class="text-lg font-semibold">Daily Moisturizer</h4>
+          <p class="text-pink-600">$18.50</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiW7Xjtb6gO0FBMM5YoMghemqj1k7BnPL7jw&s" alt="Eye Cream" class="rounded mb-2">
+          <h4 class="text-lg font-semibold">Brightening Eye Cream</h4>
+          <p class="text-pink-600">$29.99</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+          <img src="https://merryderma.com.pk/wp-content/uploads/2020/11/CeraVe-Hydrating-Facial-Cleanser-16oz.webp" alt="Face Cleanser" class="rounded mb-2">
+          <h4 class="text-lg font-semibold">Gentle Face Cleanser</h4>
+          <p class="text-pink-600">$19.99</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-center py-6 mt-10">
+    <p class="text-gray-500 text-sm">&copy; 2025 Beauty Bliss. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

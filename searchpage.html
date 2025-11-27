@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Results - Beauty Bliss</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-pink-600">Beauty Bliss</h1>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products..."
+        class="w-1/2 border border-gray-300 px-4 py-2 rounded-full focus:outline-none"
+      />
+      <div class="flex items-center space-x-4">
+        <button class="px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600">Search</button>
+        <!-- Cart Icon with Count -->
+        <a href="cart.html" class="relative">
+          <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M10 21a2 2 0 100-4 2 2 0 000 4zm8 0a2 2 0 100-4 2 2 0 000 4z" />
+          </svg>
+          <span id="cartCount" class="absolute -top-2 -right-2 bg-pink-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Results Summary -->
+  <section class="max-w-7xl mx-auto mt-6 px-4">
+    <h2 class="text-xl font-semibold mb-2">Search Results for "<span id="queryTerm" class="text-pink-500">lipstick</span>"</h2>
+    <p class="text-gray-500" id="resultCount">Showing 6 results</p>
+  </section>
+
+  <!-- Filters -->
+  <section class="max-w-7xl mx-auto mt-4 px-4 flex space-x-4">
+    <div>
+      <label class="block mb-1 font-medium">Category</label>
+      <select id="filterCategory" class="border border-gray-300 px-3 py-2 rounded">
+        <option value="">All</option>
+        <option value="Lipstick">Lipstick</option>
+        <option value="Foundation">Foundation</option>
+        <option value="Eyeshadow">Eyeshadow</option>
+      </select>
+    </div>
+    <div>
+      <label class="block mb-1 font-medium">Max Price</label>
+      <input type="number" id="filterPrice" class="border border-gray-300 px-3 py-2 rounded" placeholder="e.g. 50" />
+    </div>
+    <button onclick="applyFilters()" class="self-end px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600">
+      Apply Filters
+    </button>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="max-w-7xl mx-auto mt-6 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="searchResults">
+    <!-- Product cards will be inserted here -->
+  </section>
+
+  <!-- No Results Message -->
+  <p id="noResults" class="hidden text-center text-gray-600 text-lg mt-8">No products found matching your search.</p>
+
+  <script>
+    const products = [
+      { id: 1, name: "Matte Liquid Lipstick", category: "Lipstick", price: 20, image: "https://glomesh.pk/cdn/shop/files/cosmic-girl-matte-lipstick-blood-red-46524091433269.jpg?v=1722281054&width=1592" },
+      { id: 2, name: "Hydrating Foundation", category: "Foundation", price: 35, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT46-Ih_xWgmQBRS9zdxqH_YekmRp2nba-HQg&s" },
+      { id: 3, name: "Shimmer Eyeshadow Palette", category: "Eyeshadow", price: 40, image: "https://derma.pk/wp-content/uploads/2024/03/DERMA.PK-2024-04-03T120421.168.webp" },
+      { id: 4, name: "Velvet Lip Gloss", category: "Lipstick", price: 15, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGbe5Uk_f4rbQghNFe3VsZiKvzLdvTg7joEg&s" },
+      { id: 5, name: "Creamy Foundation Stick", category: "Foundation", price: 45, image: "https://derma.pk/wp-content/uploads/2024/03/NARS-NATURAL-LONGWEAR-FOUNDATION-MEDIUM-1-PUNJAB.png" },
+      { id: 6, name: "Bold Colors Eyeshadow", category: "Eyeshadow", price: 30, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6amwosGZQgOO5BYsjAhmaN_k6QhTnliY9MQ&s" },
+    ];
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const countElement = document.getElementById('cartCount');
+      if (countElement) {
+        countElement.textContent = totalItems;
+        countElement.style.display = totalItems > 0 ? 'flex' : 'none';
+      }
+    }
+
+    function addToCart(product) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existing = cart.find(item => item.id === product.id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function renderResults(filteredProducts) {
+      const container = document.getElementById("searchResults");
+      const count = document.getElementById("resultCount");
+      const noResults = document.getElementById("noResults");
+      container.innerHTML = "";
+
+      if (filteredProducts.length === 0) {
+        noResults.classList.remove("hidden");
+        count.textContent = "Showing 0 results";
+        return;
+      }
+
+      noResults.classList.add("hidden");
+      count.textContent = `Showing ${filteredProducts.length} results`;
+
+      filteredProducts.forEach(product => {
+        container.innerHTML += `
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-pink-600">${product.name}</h3>
+              <p class="text-gray-500">${product.category}</p>
+              <p class="text-gray-800 font-bold mt-2">$${product.price}</p>
+              <div class="flex space-x-2 mt-3">
+                <button onclick='addToCart(${JSON.stringify(product)})' class="px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600">Add to Cart</button>
+                <button class="px-3 py-1 bg-pink-500 text-white text-sm rounded hover:bg-pink-600">View Details</button>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
+
+    function applyFilters() {
+      const category = document.getElementById("filterCategory").value;
+      const price = parseFloat(document.getElementById("filterPrice").value) || Infinity;
+
+      const filtered = products.filter(product => {
+        return (!category || product.category === category) && product.price <= price;
+      });
+
+      renderResults(filtered);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderResults(products);
+      updateCartCount();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beauty Bliss | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffe6f0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #d63384;
+      font-size: 2rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #d63384;
+    }
+
+    .hero {
+      background: url('https://burst.shopifycdn.com/photos/beauty-products-flatlay.jpg?width=1000&format=pjpg&exif=0&iptc=0') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      max-width: 600px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .hero button {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #d63384;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .section h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #d63384;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .feature {
+      flex: 1 1 250px;
+      border: 1px solid #eee;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature i {
+      font-size: 2rem;
+      color: #d63384;
+      margin-bottom: 1rem;
+    }
+
+    .feature h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .cta {
+      background-color: #fff0f5;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #f8f8f8;
+      padding: 2rem;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Beauty Bliss</h1>
+    <nav>
+      <a href="beautybliss.html">Home</a>
+      <a href="catalog.html">Products</a>
+      <a href="#blog">Blog</a>
+      <a href="searchpage.html">Search Page</a>
+      <a href="#contact">Contact</a>
+	<a href="LOGIN.html">Logout</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h2>Enhance Your Natural Beauty</h2>
+      <p>Discover premium beauty products tailored for your unique glow.</p>
+   <a href="catalog.html"><button>Shop Now</button></a>
+
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <h3>Top Categories</h3>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-paint-brush"></i>
+        <h4>Makeup</h4>
+        <p>Explore a wide range of cosmetics for every look and occasion.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-spa"></i>
+        <h4>Skincare</h4>
+        <p>Nourish and pamper your skin with our luxury skincare range.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-spray-can"></i>
+        <h4>Fragrances</h4>
+        <p>Indulge in our collection of enchanting scents for all moods.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h3>Ready to Glow?</h3>
+    <a href="catalog.html" class="btn">Browse Product</a>
+
+  </section>
+
+  <footer>
+    &copy; 2025 Beauty Bliss. All rights reserved.
+  </footer>
+</body>
+
+</html>
